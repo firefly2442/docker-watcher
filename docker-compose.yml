@@ -6,6 +6,7 @@ services:
     hostname: docker-watcher
     environment:
       DOCKER_REGISTRY: "${DOCKER_REGISTRY}"
+      DOCKER_PRUNE: "${DOCKER_PRUNE}"
     volumes:
      - /var/run/docker.sock:/var/run/docker.sock
     restart: unless-stopped

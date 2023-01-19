@@ -15,12 +15,13 @@ synchronization of images across multiple machines in a local network.
 Create a `.env` file and specify the following:
 
 ```file
+# This will be the location where it will look to store all local images.
 DOCKER_REGISTRY="192.168.1.226:5000/"
+# This turns on or off the docker prune call (true/false)
+DOCKER_PRUNE="true"
 ```
 
-This will be the location where it will look to store all local images.
-
-Edit `/etc/docker/daemon.json` and add entries for the registry
+Edit `/etc/docker/daemon.json` and add an entry for the registry
 
 ```file
 {

@@ -43,10 +43,11 @@ def run():
                     logging.warning("DOCKER_REGISTRY is not set")
 
         try:
-            # cleanup and prune dangling images, only unused and untagged images
-            logging.info("Starting to prune dangling images")
-            pruned = client.images.prune(filters={"dangling": True})
-            logging.info(f"Pruned: {pruned}")
+            if os.environ.get('DOCKER_PRUNE') and os.environ.get('DOCKER_PRUNE').lower() == "true":
+                # cleanup and prune dangling images, only unused and untagged images
+                logging.info("Starting to prune dangling images")
+                pruned = client.images.prune(filters={"dangling": True})
+                logging.info(f"Pruned: {pruned}")
         except Exception as error:
             logging.error(error)
 
